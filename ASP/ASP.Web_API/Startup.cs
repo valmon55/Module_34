@@ -17,11 +17,6 @@ namespace ASP.Web_API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
         public IConfiguration Configuration 
         { get; } = new ConfigurationBuilder()
                       .AddJsonFile("HomeOptions.json")
