@@ -27,7 +27,10 @@ namespace ASP.Web_API
         {
             // Добавляем новый сервис
             services.Configure<HomeOptions>(Configuration);
-
+            //Переопределяем
+            //services.Configure<HomeOptions>(opt => opt.Area = 55);
+            // Загружаем только адрес (вложенный Json-объект) 
+            //services.Configure<Address>(Configuration.GetSection("Address"));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
