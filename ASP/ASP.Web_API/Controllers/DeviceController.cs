@@ -2,6 +2,7 @@
 using ASP.Web_API.Contracts.Devices;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 
 namespace ASP.Web_API.Controllers
@@ -41,10 +42,13 @@ namespace ASP.Web_API.Controllers
                                     AddDeviceRequest request)
         {
             //Ручная валидация
-            //if (request.CurrentVolts < 120)
-            //{
-            //    return StatusCode(403, $"Устройства с напряжением меньше 120 вольт не поддерживаются!");
-            //}
+            if (request.CurrentVolts < 120)
+            {
+                //return StatusCode(403, $"Устройства с напряжением меньше 120 вольт не поддерживаются!");
+                //ручная валидация в формате валидации на атрибутах
+                ModelState.AddModelError("currentVolts", "Устройства с напряжением меньше 120 вольт не поддерживаются!");
+                return BadRequest(ModelState);
+            }
             return StatusCode(200, $"Устройство {request.Name} добавлено!");
         }
     }
