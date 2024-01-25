@@ -1,4 +1,6 @@
+using ASP.Contracts.Validation;
 using ASP.Web_API.Configuration;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +28,9 @@ namespace ASP.Web_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            /// подключаем ВСЕ валидаторы
+            /// указывая 1 из тех, что в сборке
+            services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddDeviceRequestValidator>());
             // Добавляем новый сервис
             services.Configure<HomeOptions>(Configuration);
             var assembly = Assembly.GetAssembly(typeof(MappingProfile));
