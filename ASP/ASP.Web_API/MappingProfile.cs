@@ -1,11 +1,12 @@
-﻿using ASP.Web_API.Contracts;
+﻿using ASP.Web_API.Configuration;
+using ASP.Web_API.Contracts;
 using AutoMapper;
 
-namespace ASP.Web_API.Configuration
+namespace ASP.Web_API
 {
     public class MappingProfile : Profile
     {
-        public MappingProfile() 
+        public MappingProfile()
         {
             CreateMap<Address, AddressInfo>();
             CreateMap<HomeOptions, InfoResponse>()
