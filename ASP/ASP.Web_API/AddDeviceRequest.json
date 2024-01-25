@@ -1,0 +1,9 @@
+{
+  "name": "Чайник",
+  "manufacturer": "Bocsh",
+  "model": "G-022",
+  "serialNumber": "gh123d45",
+  "currentVolts": 220,
+  "gasUsage": false,
+  "location": "Kitchen"
+}
