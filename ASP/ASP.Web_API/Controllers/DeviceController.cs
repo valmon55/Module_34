@@ -1,4 +1,5 @@
 ﻿using ASP.Web_API.Configuration;
+using ASP.Web_API.Contracts.Devices;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -36,9 +37,10 @@ namespace ASP.Web_API.Controllers
         /// </summary>
         [HttpPost]
         [Route("Add")]
-        public IActionResult Add()
+        public IActionResult Add([FromBody] // Атрибут, указывающий, откуда брать значение объекта
+                                    AddDeviceRequest request)
         {
-            return StatusCode(200, "Этот метод будет добавлять новые устройства");
+            return StatusCode(200, $"Устройство {request.Name} добавлено!");
         }
     }
 }
