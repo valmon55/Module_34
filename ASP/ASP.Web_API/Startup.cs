@@ -11,6 +11,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace ASP.Web_API
@@ -27,6 +28,8 @@ namespace ASP.Web_API
         {
             // Добавляем новый сервис
             services.Configure<HomeOptions>(Configuration);
+            var assembly = Assembly.GetAssembly(typeof(MappingProfile));
+            services.AddAutoMapper(assembly);
             //Переопределяем
             //services.Configure<HomeOptions>(opt => opt.Area = 55);
             // Загружаем только адрес (вложенный Json-объект) 
